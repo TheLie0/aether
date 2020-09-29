@@ -4,7 +4,7 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 --120 bottom of clouds
 
 if minp.y >= aether2.lower_bound then
-
+	
 	--the () is the line in api doc
 	--1 seed (2565) 2 octaves (2580) 3 persistance (2596) scale (2524)
 	local perlin = PerlinNoise(aether2.seed, 3, 1, 100) --3,10,50 for crazy caves -- 3, 1, 100 for floating islands
@@ -41,17 +41,19 @@ if minp.y >= aether2.lower_bound then
 			if testerer >0.85 then
 				data[p_pos_deco] = diamond
 			end
-			--  elseif p_pos_below and content_id(p_pos_below) == "aether:heavenly_stone" then
+		--  elseif p_pos_below and content_id(p_pos_below) == "aether:heavenly_stone" then
 			--    data[p_pos] = grass
 		end
-		end
-		end
-		end
+	
+	end
+	end
+	end
 
-		vm:set_data(data)
-		vm:write_to_map()
+	vm:set_data(data)
+	vm:write_to_map()
+	vm:calc_lighting(minp, maxp, false) -- no shadows in the aether	
 
-  end
+end
 
 end)
 
