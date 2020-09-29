@@ -22,7 +22,7 @@
 
 local S = nether.get_translator
 
-floatlands_flavortext = ""
+aether_flavortext = ""
 
 nether.register_portal("aether_portal", {
 	frame_node_name     = "nether:glowstone",
@@ -40,16 +40,16 @@ nether.register_portal("aether_portal", {
 	title = S("Floatlands Portal"),
 	book_of_portals_pagetext = S([[Requiring 14 blocks of glowstone, and constructed like a nether portal.
 This portal seemed to bring us to some kind of heavenly paradise.@1]],
-	floatlands_flavortext),
+	aether_flavortext),
 
 	is_within_realm = function(pos) -- return true if pos is inside the Aether
 		-- TODO: Get these values from mod-wide constants.
-		return (pos.y >= aether2.lower_bound and pos.y <= aether2.upper_bound)
+		return (pos.y >= aether2.lower_bound)
 	end,
 
 	find_realm_anchorPos = function(surface_anchorPos, player_name)
 		-- TODO: implement a surface algorithm that finds land
-		local destination_pos = {x = surface_anchorPos.x ,y = aether2.upper_bound, z = surface_anchorPos.z}
+		local destination_pos = {x = surface_anchorPos.x ,y = aether2.lower_bound + 100, z = surface_anchorPos.z}
 
 		-- a y_factor of 0 makes the search ignore the altitude of the portals (as long as they are in the Aether)
 		local existing_portal_location, existing_portal_orientation = nether.find_nearest_working_portal("aether_portal", destination_pos, 10, 0)

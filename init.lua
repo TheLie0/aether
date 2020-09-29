@@ -1,3 +1,6 @@
+-- create global namespace
+aether2 = {}
+
 dofile(minetest.get_modpath('aether2') .. '/nodes.lua')
 dofile(minetest.get_modpath('aether2') .. '/tools.lua')
 dofile(minetest.get_modpath('aether2') .. '/crafting.lua')
